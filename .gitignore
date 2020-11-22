@@ -1,3 +1,6 @@
 .env
 .flaskenv
 /env
+/node_modules/
+/package-lock.json
+/hfc-key-store/
