@@ -1,6 +1,5 @@
 # Getting Started with Decentralized-Data-Vault-Blockchain
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This  Hyperledger Fabric Blockchain network manage data for different service Requests
 
 ## Available Scripts
 
