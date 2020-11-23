@@ -1,6 +1,5 @@
 import logo from './logo.svg';
 import './App.css';
-
 function App() {
   return (
     <div className="App">
@@ -9,8 +8,7 @@ function App() {
         
         <a
           className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
+          href="/"
           rel="noopener noreferrer"
         >
          Decentralized-Data-Vault-Blockchain
