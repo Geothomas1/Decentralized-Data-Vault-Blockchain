@@ -1,4 +1,6 @@
+# Getting Started with Create React App
 
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
@@ -27,4 +29,16 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-<img src="b.png">
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**\\
+### 'OUTPUT Start'
+<img src="out1.png">
+<br>
+<br>
+###O ' login and Register to Network'
+<img src="out2.png">
+<br>
+<br>
+<img src="out3.png">
+
