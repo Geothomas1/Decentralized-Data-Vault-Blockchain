@@ -44,6 +44,11 @@ Your app is ready to be deployed!
 <br>
 <br>
 <img src="out6.png">
+###POSTMAN Request and CouchDB
+<img src="out7.png">
+<br>
+<br>
+<img src="out8.png"
 
 
 
