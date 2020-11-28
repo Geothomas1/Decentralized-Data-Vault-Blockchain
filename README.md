@@ -51,10 +51,9 @@ Your app is ready to be deployed!
 <img src="out8.png">
 ###For Restart containers
 docker start $(docker ps -aq)
-###TXID DATA
-<script> 
-var data = {
-  "data": 
+###TXID DATA 
+
+
 {
     "validationCode": 0,
     "transactionEnvelope": {
@@ -329,12 +328,4 @@ var data = {
                                                             {
                                                                 "key":"
 
-
-
-}
-
-
-document.getElementById("json").textContent = JSON.stringify(data, undefined, 2);
-</script>
-<pre id="json"></pre>
 
