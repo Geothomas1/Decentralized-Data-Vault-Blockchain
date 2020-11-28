@@ -48,7 +48,9 @@ Your app is ready to be deployed!
 <img src="out7.png">
 <br>
 <br>
-<img src="out8.png"
+<img src="out8.png">
+###For Restart containers
+docker start $(docker ps -aq)
 
 
 
