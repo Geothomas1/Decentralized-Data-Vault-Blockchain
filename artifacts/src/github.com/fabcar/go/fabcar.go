@@ -95,6 +95,20 @@ func (s *SmartContract) queryCar(APIstub shim.ChaincodeStubInterface, args []str
 	return shim.Success(carAsBytes)
 }
 
+//test method for upgrade chaincode
+
+func (s *SmartContract) test(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
+
+	if len(args) != 1 {
+		return shim.Error("Incorrect number of arguments. Expecting 1")
+	}
+
+	carAsBytes, _ := APIstub.GetState(args[0])
+	return shim.Success(carAsBytes)
+}
+
+//end of test method
+
 func (s *SmartContract) readPrivateCar(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
 
 	if len(args) != 2 {
@@ -137,16 +151,6 @@ func (s *SmartContract) readCarPrivateDetails(APIstub shim.ChaincodeStubInterfac
 		jsonResp := "{\"Error\":\"Marble private details does not exist: " + args[0] + "\"}"
 		return shim.Error(jsonResp)
 	}
-	return shim.Success(carAsBytes)
-}
-
-func (s *SmartContract) test(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
-
-	if len(args) != 1 {
-		return shim.Error("Incorrect number of arguments. Expecting 1")
-	}
-
-	carAsBytes, _ := APIstub.GetState(args[0])
 	return shim.Success(carAsBytes)
 }
 
