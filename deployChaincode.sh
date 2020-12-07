@@ -49,18 +49,18 @@ setGlobalsForPeer1Org2() {
 
 presetup() {
     echo Vendoring Go dependencies ...
-    pushd ./artifacts/src/github.com/fabcar/go
+    pushd ./artifacts/src/github.com/datavalut/go
     GO111MODULE=on go mod vendor
     popd
     echo Finished vendoring Go dependencies
 }
-#presetup
+# presetup
 
 CHANNEL_NAME="mychannel"
 CC_RUNTIME_LANGUAGE="golang"
 VERSION="1"
-CC_SRC_PATH="./artifacts/src/github.com/fabcar/go"
-CC_NAME="fabcar"
+CC_SRC_PATH="./artifacts/src/github.com/datavalut/go"
+CC_NAME="datavalut"
 
 packageChaincode() {
     rm -rf ${CC_NAME}.tar.gz
@@ -70,28 +70,27 @@ packageChaincode() {
         --label ${CC_NAME}_${VERSION}
     echo "===================== Chaincode is packaged on peer0.org1 ===================== "
 }
-#packageChaincode
+# packageChaincode
 
 installChaincode() {
-    
     setGlobalsForPeer0Org1
     peer lifecycle chaincode install ${CC_NAME}.tar.gz
     echo "===================== Chaincode is installed on peer0.org1 ===================== "
 
-     #setGlobalsForPeer1Org1
-     #peer lifecycle chaincode install ${CC_NAME}.tar.gz
-     #echo "===================== Chaincode is installed on peer1.org1 ===================== "
+    # setGlobalsForPeer1Org1
+    # peer lifecycle chaincode install ${CC_NAME}.tar.gz
+    # echo "===================== Chaincode is installed on peer1.org1 ===================== "
 
     setGlobalsForPeer0Org2
     peer lifecycle chaincode install ${CC_NAME}.tar.gz
     echo "===================== Chaincode is installed on peer0.org2 ===================== "
 
-     #setGlobalsForPeer1Org2
-     #peer lifecycle chaincode install ${CC_NAME}.tar.gz
-     #echo "===================== Chaincode is installed on peer1.org2 ===================== "
+    # setGlobalsForPeer1Org2
+    # peer lifecycle chaincode install ${CC_NAME}.tar.gz
+    # echo "===================== Chaincode is installed on peer1.org2 ===================== "
 }
 
-#installChaincode
+# installChaincode
 
 queryInstalled() {
     setGlobalsForPeer0Org1
@@ -102,7 +101,7 @@ queryInstalled() {
     echo "===================== Query installed successful on peer0.org1 on channel ===================== "
 }
 
-#queryInstalled
+# queryInstalled
 
 # --collections-config ./artifacts/private-data/collections_config.json \
 #         --signature-policy "OR('Org1MSP.member','Org2MSP.member')" \
@@ -122,7 +121,6 @@ approveForMyOrg1() {
     echo "===================== chaincode approved from org 1 ===================== "
 
 }
-#approveForMyOrg1
 
 getBlock() {
     setGlobalsForPeer0Org1
@@ -154,7 +152,7 @@ checkCommitReadyness() {
     echo "===================== checking commit readyness from org 1 ===================== "
 }
 
-#checkCommitReadyness
+# checkCommitReadyness
 
 # --collections-config ./artifacts/private-data/collections_config.json \
 # --signature-policy "OR('Org1MSP.member','Org2MSP.member')" \
@@ -171,7 +169,7 @@ approveForMyOrg2() {
     echo "===================== chaincode approved from org 2 ===================== "
 }
 
-#approveForMyOrg2
+# approveForMyOrg2
 
 checkCommitReadyness() {
 
@@ -183,7 +181,7 @@ checkCommitReadyness() {
     echo "===================== checking commit readyness from org 1 ===================== "
 }
 
-#checkCommitReadyness
+# checkCommitReadyness
 
 commitChaincodeDefination() {
     setGlobalsForPeer0Org1
@@ -197,7 +195,7 @@ commitChaincodeDefination() {
 
 }
 
-#commitChaincodeDefination
+# commitChaincodeDefination
 
 queryCommitted() {
     setGlobalsForPeer0Org1
@@ -231,7 +229,7 @@ chaincodeInvoke() {
 
     setGlobalsForPeer0Org1
 
-    ## Create Car
+    ## Create Datavalut
     # peer chaincode invoke -o localhost:7050 \
     #     --ordererTLSHostnameOverride orderer.example.com \
     #     --tls $CORE_PEER_TLS_ENABLED \
@@ -240,7 +238,7 @@ chaincodeInvoke() {
     #     --peerAddresses localhost:7051 \
     #     --tlsRootCertFiles $PEER0_ORG1_CA \
     #     --peerAddresses localhost:9051 --tlsRootCertFiles $PEER0_ORG2_CA   \
-    #     -c '{"function": "createCar","Args":["Car-ABCDEEE", "Audi", "R8", "Red", "Pavan"]}'
+    #     -c '{"function": "createDatavalut","Args":["Datavalut-ABCDEEE", "Audi", "R8", "Red", "Pavan"]}'
 
     ## Init ledger
     peer chaincode invoke -o localhost:7050 \
@@ -253,7 +251,7 @@ chaincodeInvoke() {
         -c '{"function": "initLedger","Args":[]}'
 
     ## Add private data
-    export CAR=$(echo -n "{\"key\":\"1111\", \"make\":\"Tesla\",\"model\":\"Tesla A1\",\"color\":\"White\",\"owner\":\"pavan\",\"price\":\"10000\"}" | base64 | tr -d \\n)
+    export DATAVALUT=$(echo -n "{\"key\":\"1111\", \"dataid\":\"G1\",\"email\":\"testdgeo1@gmail.com\",\"phone\":\"6238908844\",\"owner\":\"Geo\",\"aadhaar\":\"857683731881\"}" | base64 | tr -d \\n)
     peer chaincode invoke -o localhost:7050 \
         --ordererTLSHostnameOverride orderer.example.com \
         --tls $CORE_PEER_TLS_ENABLED \
@@ -261,8 +259,8 @@ chaincodeInvoke() {
         -C $CHANNEL_NAME -n ${CC_NAME} \
         --peerAddresses localhost:7051 --tlsRootCertFiles $PEER0_ORG1_CA \
         --peerAddresses localhost:9051 --tlsRootCertFiles $PEER0_ORG2_CA \
-        -c '{"function": "createPrivateCar", "Args":[]}' \
-        --transient "{\"car\":\"$CAR\"}"
+        -c '{"function": "createPrivateDatavalut", "Args":[]}' \
+        --transient "{\"datavalut\":\"$DATAVALUT\"}"
 }
 
 # chaincodeInvoke
@@ -270,22 +268,22 @@ chaincodeInvoke() {
 chaincodeQuery() {
     setGlobalsForPeer0Org2
 
-    # Query all cars
-    # peer chaincode query -C $CHANNEL_NAME -n ${CC_NAME} -c '{"Args":["queryAllCars"]}'
+    # Query all datavalut's
+    # peer chaincode query -C $CHANNEL_NAME -n ${CC_NAME} -c '{"Args":["queryAllDatavaluts"]}'
 
-    # Query Car by Id
-    peer chaincode query -C $CHANNEL_NAME -n ${CC_NAME} -c '{"function": "queryCar","Args":["CAR1"]}'
+    # Query Datavalut by Id
+    peer chaincode query -C $CHANNEL_NAME -n ${CC_NAME} -c '{"function": "queryDatavalut","Args":["Datavalut0"]}'
     #'{"Args":["GetSampleData","Key1"]}'
 
-    # Query Private Car by Id
-    # peer chaincode query -C $CHANNEL_NAME -n ${CC_NAME} -c '{"function": "readPrivateCar","Args":["1111"]}'
-    # peer chaincode query -C $CHANNEL_NAME -n ${CC_NAME} -c '{"function": "readCarPrivateDetails","Args":["1111"]}'
+    # Query Private Datavalut by Id
+    # peer chaincode query -C $CHANNEL_NAME -n ${CC_NAME} -c '{"function": "readPrivateDatavalut","Args":["1111"]}'
+    # peer chaincode query -C $CHANNEL_NAME -n ${CC_NAME} -c '{"function": "readDatavalutPrivateDetails","Args":["1111"]}'
 }
 
 # chaincodeQuery
 
 # Run this function if you add any new dependency in chaincode
-# presetup
+#presetup
 
 #packageChaincode
 #installChaincode
@@ -299,5 +297,5 @@ chaincodeQuery() {
 #chaincodeInvokeInit
 #sleep 5
 #chaincodeInvoke
-#sleep 3
+sleep 3
 #chaincodeQuery
