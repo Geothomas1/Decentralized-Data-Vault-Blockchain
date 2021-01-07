@@ -1,56 +1,13 @@
-# Getting Started with Decentralized-Data-Vault-Blockchain
-This  Hyperledger Fabric Blockchain network manage data for different service Requests
+# Basic-Block-Chain-Network<br>
+### This is a very basic blockchain network build using hyperledger fabric 2.2.0 with the help of its binaries and samples. Before setting up the network follow https://hyperledger-fabric.readthedocs.io/en/release-2.2/prereqs.html for prerequisites and https://hyperledger-fabric.readthedocs.io/en/release-2.2/install.html to install hyperledeger fabric binaries and samples.
+## Steps to setup the network:<br>
+### 1.To start the network run <i>./network.sh up </i>.<br>
+### 2.To create channel run <i>./network.sh createChannel </i>.<br>
+### 3.To deploy chaincode run <i>./network.sh deployCC </i>.<br>
+### 4.To stop the network run <i>./network.sh down </i>.<br>
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-
-### 'OUTPUT Start'
-<img src="out1.png">
-<br>
-<br>
-### 'login and Register to Network'
-<img src="out2.png">
-<br>
-<br>
-<img src="out3.png">
-### 'Chaincode DEV'
-<img src="out4.png">
-<br>
-<br>
-<img src="out5.png">
-<br>
-<br>
-<img src="out6.png">
-###POSTMAN Request and CouchDB
-<img src="out7.png">
-<br>
-<br>
-<img src="out8.png">
-###For Restart containers
-docker start $(docker ps -aq)
-<br>
-<br>
-<img src="out9.png">
+## To integrate Hyperledger Explorer:<br>
+### 1.From this directory run <i>cd explorer</i>.<br>
+### 2.Run the docker file using the command <i>docker-compose up -d</i>.<br>
+### 3.Then use a browser and open the link localhost:8080/
+### 4. Use the id and password given in connection profile to login.
